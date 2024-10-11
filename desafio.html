@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var precoDoMetroQuadrado = 25;
+        var continuarComprando = true;
+
+        while (continuarComprando) {
+            var metros;
+            var sabeOsMetrosQuadrados = confirm("Você sabe quantos metros quadrados são necessários?");
+            
+            if (sabeOsMetrosQuadrados == true) {
+                var metrosQuadrados = parseInt(prompt("Digite a quantidade de metros quadrados: "));
+                metros = metrosQuadrados;
+                var total = precoDoMetroQuadrado * metros;
+                alert("Você está comprando " + metros + " metros quadrados ao preço de R$" + precoDoMetroQuadrado + " por metro quadrado. O valor total da compra é de R$" + total);
+                
+                var desejaComprar = confirm("Deseja continuar com a compra?");
+                
+                if (desejaComprar == true) {
+                    var formaDePagamento = parseInt(prompt("Qual é a forma de pagamento? \n 1 - Dinheiro (10% de desconto) \n 2 - Cartão"));
+                    
+                    while (formaDePagamento !== 1 && formaDePagamento !== 2) {
+                        formaDePagamento = parseInt(prompt("Qual é a forma de pagamento? \n 1 - Dinheiro (10% de desconto) \n 2 - Cartão"));
+                    }
+
+                    if (formaDePagamento == 1) {
+                        total = total - (total * 0.1);
+                        alert("Você está comprando " + metros + " metros quadrados ao preço de R$" + precoDoMetroQuadrado + " por metro quadrado. O total com 10% de desconto em dinheiro é R$" + total);
+                        
+                        var confirmarCompra = confirm("Deseja confirmar a compra?");
+                        
+                        if (confirmarCompra == true) {
+                            alert("Compra realizada: " + metros + " metros quadrados a R$" + precoDoMetroQuadrado + " por metro quadrado. Total com desconto de 10%: R$" + total);
+                        } else {
+                            alert("Compra cancelada.");
+                        }
+
+                    } else if (formaDePagamento == 2) {
+                        var opcoesDeCartao = parseInt(prompt("Qual opção de cartão deseja utilizar? \n 1 - Débito (5% de desconto) \n 2 - Crédito à vista (1% de acréscimo) \n 3 - Parcelado (2% de acréscimo)"));
+                        
+                        while (opcoesDeCartao !== 1 && opcoesDeCartao !== 2 && opcoesDeCartao !== 3) {
+                            opcoesDeCartao = parseInt(prompt("Qual opção de cartão deseja utilizar? \n 1 - Débito (5% de desconto) \n 2 - Crédito à vista (1% de acréscimo) \n 3 - Parcelado (2% de acréscimo)"));
+                        }
+
+                        if (opcoesDeCartao == 1) {
+                            total = total - (total * 0.05);
+                            alert("Você está comprando " + metros + " metros quadrados ao preço de R$" + precoDoMetroQuadrado + " por metro quadrado. O total com 5% de desconto (Débito) é R$" + total);
+                        
+                        } else if (opcoesDeCartao == 2) {
+                            total = total + (total * 0.01);
+                            alert("Você está comprando " + metros + " metros quadrados ao preço de R$" + precoDoMetroQuadrado + " por metro quadrado. O total com 1% de acréscimo (Crédito à vista) é R$" + total);
+                        
+                        } else if (opcoesDeCartao == 3) {
+                            total = total + (total * 0.02);
+                            var parcelas = parseInt(prompt("Em quantas parcelas deseja dividir?"));
+                            var valorParcelado = total / parcelas;
+                            alert("Você está comprando " + metros + " metros quadrados ao preço de R$" + precoDoMetroQuadrado + " por metro quadrado. O total com 2% de acréscimo (Parcelado) é R$" + total + " dividido em " + parcelas + " parcelas de R$" + valorParcelado.toFixed(2) + " cada.");
+                        }
+
+                        var confirmarCompra = confirm("Deseja confirmar a compra?");
+                        
+                        if (confirmarCompra == true) {
+                            alert("Compra realizada: " + metros + " metros quadrados a R$" + precoDoMetroQuadrado + " por metro quadrado. Total com acréscimos/descontos: R$" + total);
+                        } else {
+                            alert("Compra cancelada.");
+                        }
+                    }
+
+                } else {
+                    alert("Compra cancelada.");
+                }
+
+            } else {
+                var comprimento = parseInt(prompt("Qual é o comprimento do ambiente (em metros)?"));
+                var largura = parseInt(prompt("Qual é a largura do ambiente (em metros)?"));
+                metros = comprimento * largura;
+                var total = precoDoMetroQuadrado * metros;
+                alert("A área total do ambiente é de " + metros + " metros quadrados, e o valor total da compra é de R$" + total);
+            }
+            
+            continuarComprando = confirm("Deseja realizar outra consulta?");
+        }
+
+        alert("Obrigado por usar nosso sistema! Até a próxima.");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
